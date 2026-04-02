@@ -11,58 +11,44 @@
             --primary-blue: #00d2ff;
             --secondary-blue: #3a7bd5;
             --dark-bg: #0f172a;
-            --glass-bg: rgba(255,255,255, 0.04);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(255,255,255,0.04);
+            --glass-border: rgba(255,255,255,0.1);
             --text-white: #f8fafc;
             --text-gray: #94a3b8;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-
         body {
             background-color: var(--dark-bg);
             background-image:
-                radial-gradient(at 0% 0%, rgba(0, 210, 255, 0.12) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(58, 123, 213, 0.12) 0px, transparent 50%);
+                radial-gradient(at 0% 0%, rgba(0,210,255,0.12) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(58,123,213,0.12) 0px, transparent 50%);
             color: var(--text-white);
             overflow-x: hidden;
             font-family: 'DM Sans', sans-serif;
         }
-
-        /* ── Particle canvas ── */
         #particles-canvas {
             position: fixed; top: 0; left: 0;
             width: 100%; height: 100%;
-            pointer-events: none; z-index: 0;
-            opacity: 0.35;
+            pointer-events: none; z-index: 0; opacity: 0.35;
         }
-
-        /* ── Cursor glow ── */
         .cursor-glow {
-            position: fixed; width: 300px; height: 300px;
-            border-radius: 50%;
+            position: fixed; width: 300px; height: 300px; border-radius: 50%;
             background: radial-gradient(circle, rgba(0,210,255,0.07) 0%, transparent 70%);
-            pointer-events: none; z-index: 1;
-            transform: translate(-50%, -50%);
-            transition: transform 0.08s linear;
+            pointer-events: none; z-index: 1; transform: translate(-50%,-50%);
         }
-
-        /* ── Navbar ── */
         nav {
             position: fixed; top: 0; width: 100%;
             padding: 15px 5%; display: flex;
             justify-content: space-between; align-items: center;
-            background: rgba(15, 23, 42, 0.88);
+            background: rgba(15,23,42,0.88);
             backdrop-filter: blur(14px); z-index: 1000;
             border-bottom: 1px solid var(--glass-border);
             animation: slideDown 0.7s cubic-bezier(0.22,1,0.36,1) both;
         }
-
         @keyframes slideDown {
             from { transform: translateY(-100%); opacity: 0; }
-            to   { transform: translateY(0);    opacity: 1; }
+            to   { transform: translateY(0); opacity: 1; }
         }
-
         .brand-container { display: flex; align-items: center; gap: 15px; }
         .nav-logo { height: 40px; width: 40px; border-radius: 8px; object-fit: cover; cursor: pointer; transition: transform 0.3s; }
         .nav-logo:hover { transform: rotate(8deg) scale(1.1); }
@@ -72,22 +58,17 @@
             background: linear-gradient(to right, #fff, var(--primary-blue));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-
         .nav-links { display: flex; list-style: none; gap: 25px; }
         .nav-links a {
             text-decoration: none; color: var(--text-white);
-            font-size: 0.9rem; opacity: 0.75; transition: 0.3s;
-            position: relative;
+            font-size: 0.9rem; opacity: 0.75; transition: 0.3s; position: relative;
         }
         .nav-links a::after {
             content: ''; position: absolute; bottom: -4px; left: 0;
-            width: 0; height: 2px; background: var(--primary-blue);
-            transition: width 0.3s ease;
+            width: 0; height: 2px; background: var(--primary-blue); transition: width 0.3s ease;
         }
         .nav-links a:hover { opacity: 1; color: var(--primary-blue); }
         .nav-links a:hover::after { width: 100%; }
-
-        /* ── Sections ── */
         section { padding: 100px 10% 60px; min-height: 100vh; position: relative; z-index: 2; }
         h2 {
             font-family: 'Syne', sans-serif;
@@ -96,43 +77,31 @@
         h2::after {
             content: ''; position: absolute; bottom: -10px; left: 0;
             width: 0; height: 4px; background: var(--primary-blue);
-            border-radius: 2px;
-            animation: lineGrow 0.8s 0.3s forwards;
+            border-radius: 2px; animation: lineGrow 0.8s 0.3s forwards;
         }
         @keyframes lineGrow { to { width: 60px; } }
-
-        /* ── Hero ── */
         #home {
             text-align: center; display: flex; flex-direction: column;
             justify-content: center; align-items: center;
         }
-
         .hero-img {
             width: 200px; height: 200px; border-radius: 50%;
             border: 3px solid var(--primary-blue);
-            margin-bottom: 20px; object-fit: cover; cursor: pointer;
+            margin-bottom: 20px; object-fit: cover;
             animation: heroFloat 0.8s cubic-bezier(0.22,1,0.36,1) both, floatBob 4s ease-in-out 1s infinite;
-            box-shadow: 0 0 0 0 rgba(0,210,255,0.4);
-            transition: box-shadow 0.3s;
+            box-shadow: 0 0 0 0 rgba(0,210,255,0.4); transition: box-shadow 0.3s;
         }
         .hero-img:hover { box-shadow: 0 0 30px rgba(0,210,255,0.5); }
-
         @keyframes heroFloat {
             from { opacity: 0; transform: translateY(40px) scale(0.85); }
-            to   { opacity: 1; transform: translateY(0)  scale(1); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
         }
         @keyframes floatBob {
             0%,100% { transform: translateY(0); }
-            50%      { transform: translateY(-12px); }
+            50%     { transform: translateY(-12px); }
         }
-
-        #home h1 {
-            font-family: 'Syne', sans-serif; font-size: 3rem;
-            animation: fadeUp 0.7s 0.2s both;
-        }
-        #home p { animation: fadeUp 0.7s 0.4s both; }
-
-        /* ── About ── */
+        #home h1 { font-family: 'Syne', sans-serif; font-size: 3rem; animation: fadeUp 0.7s 0.2s both; }
+        #home p  { animation: fadeUp 0.7s 0.4s both; }
         .about-grid {
             display: grid; grid-template-columns: 1fr 1.5fr;
             gap: 50px; align-items: center;
@@ -147,17 +116,14 @@
             transition: transform 0.5s ease, box-shadow 0.5s ease;
         }
         .about-img:hover { transform: scale(1.03) rotate(-1deg); box-shadow: 0 30px 60px rgba(0,210,255,0.15); }
-
         .about-right h3 { font-family: 'Syne', sans-serif; font-size: 1.8rem; color: var(--primary-blue); margin-bottom: 15px; }
-        .about-right p { font-size: 1.05rem; line-height: 1.8; color: var(--text-gray); margin-bottom: 25px; }
-
+        .about-right p  { font-size: 1.05rem; line-height: 1.8; color: var(--text-gray); margin-bottom: 25px; }
         .skills-box { display: flex; flex-wrap: wrap; gap: 10px; }
         .skill-tag {
             background: rgba(0,210,255,0.08);
             border: 1px solid rgba(0,210,255,0.4);
             color: var(--primary-blue); padding: 8px 18px;
-            border-radius: 30px; font-size: 0.85rem;
-            cursor: pointer;
+            border-radius: 30px; font-size: 0.85rem; cursor: pointer;
             transition: background 0.3s, transform 0.25s, box-shadow 0.3s;
             animation: popIn 0.4s both;
         }
@@ -166,19 +132,14 @@
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 6px 20px rgba(0,210,255,0.25);
         }
-
-        /* ── Cards ── */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 25px; margin-top: 30px; }
-
         .card {
             background: var(--glass-bg); padding: 20px; border-radius: 20px;
             border: 1px solid var(--glass-border);
             transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), border-color 0.3s, box-shadow 0.35s;
             opacity: 0; transform: translateY(30px);
         }
-        .card.visible {
-            animation: fadeUp 0.6s forwards;
-        }
+        .card.visible { animation: fadeUp 0.6s forwards; }
         .card:hover {
             transform: translateY(-10px) scale(1.02);
             border-color: var(--primary-blue);
@@ -186,13 +147,11 @@
         }
         .card img {
             width: 100%; height: 200px; border-radius: 15px;
-            object-fit: cover; margin-bottom: 15px; cursor: pointer;
+            object-fit: cover; margin-bottom: 15px;
             transition: transform 0.4s ease;
         }
         .card:hover img { transform: scale(1.04); }
         .card h4 { font-family: 'Syne', sans-serif; font-size: 1.1rem; margin-bottom: 8px; }
-
-        /* ── Buttons ── */
         .btn {
             background: var(--primary-blue); color: #000; border: none;
             padding: 10px 22px; border-radius: 10px; cursor: pointer;
@@ -202,7 +161,6 @@
         }
         .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,210,255,0.35); }
         .btn:active { transform: scale(0.97); }
-
         .btn-add {
             background: none; border: 2px dashed rgba(0,210,255,0.5);
             color: var(--primary-blue); width: 100%;
@@ -210,25 +168,17 @@
             transition: border-color 0.3s, background 0.3s;
         }
         .btn-add:hover { background: rgba(0,210,255,0.06); border-color: var(--primary-blue); box-shadow: none; }
-
         .upload-input { display: none; }
         [contenteditable="true"]:focus {
             outline: 2px solid var(--primary-blue);
             background: rgba(255,255,255,0.05);
             padding: 5px; border-radius: 5px;
         }
-
-        /* ── Scroll reveal ── */
         .reveal {
             opacity: 0; transform: translateY(40px);
             transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1);
         }
         .reveal.visible { opacity: 1; transform: translateY(0); }
-
-        /* ── Section title entrance ── */
-        .section-title-wrap { overflow: hidden; }
-
-        /* ── Keyframes ── */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
             to   { opacity: 1; transform: translateY(0); }
@@ -237,34 +187,24 @@
             from { opacity: 0; transform: scale(0.7); }
             to   { opacity: 1; transform: scale(1); }
         }
-
-        /* ── Typing cursor ── */
         .typed-cursor { color: var(--primary-blue); animation: blink 0.8s infinite; }
         @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
-
-        /* ── Footer ── */
         footer {
             text-align: center; padding: 40px; color: var(--text-gray);
-            border-top: 1px solid var(--glass-border);
-            position: relative; z-index: 2;
+            border-top: 1px solid var(--glass-border); position: relative; z-index: 2;
         }
-
-        /* ── Responsive ── */
         @media (max-width: 900px) {
             .about-grid { grid-template-columns: 1fr; text-align: center; }
             .nav-links { display: none; }
             #home h1 { font-size: 2rem; }
         }
-
-        /* ── Section number watermark ── */
         .section-num {
             position: absolute; top: 80px; right: 8%;
             font-family: 'Syne', sans-serif;
             font-size: 7rem; font-weight: 800; color: rgba(0,210,255,0.04);
             pointer-events: none; user-select: none; line-height: 1;
         }
-
-        /* ── Owner mode toggle button ── */
+        /* Owner toggle btn */
         #ownerToggleBtn {
             position: fixed; bottom: 28px; right: 28px; z-index: 9999;
             background: rgba(15,23,42,0.92); border: 1px solid var(--glass-border);
@@ -279,9 +219,7 @@
             border-color: var(--primary-blue); color: var(--primary-blue);
             box-shadow: 0 0 16px rgba(0,210,255,0.25);
         }
-        #ownerToggleBtn i { font-size: 0.9rem; }
-
-        /* ── Owner modal overlay ── */
+        /* Owner modal */
         #ownerModal {
             display: none; position: fixed; inset: 0; z-index: 10000;
             background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
@@ -301,8 +239,7 @@
             width: 100%; padding: 12px 16px; border-radius: 10px;
             background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
             color: var(--text-white); font-size: 1rem; font-family: 'DM Sans', sans-serif;
-            outline: none; margin-bottom: 16px;
-            transition: border-color 0.3s;
+            outline: none; margin-bottom: 16px; transition: border-color 0.3s;
         }
         .modal-box input[type="password"]:focus { border-color: var(--primary-blue); }
         .modal-box .modal-btns { display: flex; gap: 10px; }
@@ -312,17 +249,21 @@
         #modalCancel  { background: rgba(255,255,255,0.06); color: var(--text-white); }
         #modalCancel:hover { background: rgba(255,255,255,0.12); }
         #modalError   { color: #ff6b6b; font-size: 0.82rem; margin-top: -8px; margin-bottom: 10px; min-height: 18px; }
-
-        /* ── Owner-only elements hidden by default ── */
+        /* Owner-only */
         .owner-only { display: none !important; }
         body.owner-mode .owner-only { display: inline-flex !important; }
-        body.owner-mode .owner-only.block-display { display: block !important; }
-
-        /* Images not clickable in viewer mode */
         body:not(.owner-mode) img.clickable-img { cursor: default; pointer-events: none; }
         body.owner-mode img.clickable-img { cursor: pointer; pointer-events: auto; }
-
-        /* ── Reaction bar ── */
+        /* Save indicator */
+        #saveIndicator {
+            position: fixed; bottom: 80px; right: 28px; z-index: 9998;
+            background: rgba(0,210,255,0.15); border: 1px solid var(--primary-blue);
+            color: var(--primary-blue); padding: 8px 16px; border-radius: 50px;
+            font-size: 0.78rem; font-family: 'DM Sans', sans-serif;
+            opacity: 0; transition: opacity 0.3s; pointer-events: none;
+        }
+        #saveIndicator.show { opacity: 1; }
+        /* Reaction bar */
         .reaction-bar {
             display: flex; align-items: center; gap: 8px;
             margin-top: 14px; flex-wrap: wrap;
@@ -332,16 +273,13 @@
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 50px; padding: 5px 13px;
-            cursor: pointer; font-size: 1rem;
-            color: var(--text-gray);
+            cursor: pointer; font-size: 1rem; color: var(--text-gray);
             transition: background 0.2s, border-color 0.2s, transform 0.15s;
             user-select: none;
         }
         .react-btn:hover { background: rgba(255,255,255,0.1); transform: scale(1.08); }
         .react-btn.reacted { border-color: var(--primary-blue); background: rgba(0,210,255,0.1); color: var(--text-white); }
         .react-btn .count { font-size: 0.8rem; font-weight: 600; min-width: 14px; }
-
-        /* burst animation */
         @keyframes burst {
             0%   { transform: scale(1); }
             40%  { transform: scale(1.45); }
@@ -349,8 +287,6 @@
             100% { transform: scale(1); }
         }
         .react-btn.burst { animation: burst 0.35s ease; }
-
-        /* floating emoji */
         .float-emoji {
             position: fixed; pointer-events: none; font-size: 1.6rem;
             animation: floatUp 1s ease forwards; z-index: 9999;
@@ -359,14 +295,27 @@
             0%   { opacity: 1; transform: translateY(0) scale(1); }
             100% { opacity: 0; transform: translateY(-80px) scale(1.4); }
         }
+        /* Image upload overlay hint */
+        body.owner-mode .card img { position: relative; }
+        body.owner-mode .img-wrapper { position: relative; cursor: pointer; }
+        body.owner-mode .img-wrapper::after {
+            content: '📷 Click to change';
+            position: absolute; inset: 0;
+            background: rgba(0,210,255,0.15);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.85rem; color: var(--primary-blue);
+            border-radius: 15px; opacity: 0; transition: opacity 0.3s;
+        }
+        body.owner-mode .img-wrapper:hover::after { opacity: 1; }
     </style>
 </head>
 <body>
 
 <canvas id="particles-canvas"></canvas>
 <div class="cursor-glow" id="cursorGlow"></div>
+<div id="saveIndicator">✓ Saved locally</div>
 
-<!-- Owner Password Modal -->
+<!-- Owner Modal -->
 <div id="ownerModal">
     <div class="modal-box">
         <div style="font-size:2rem;margin-bottom:12px;">🔐</div>
@@ -381,7 +330,6 @@
     </div>
 </div>
 
-<!-- Owner Toggle Button (bottom-right) -->
 <button id="ownerToggleBtn" onclick="handleOwnerBtn()">
     <i class="fas fa-lock" id="ownerBtnIcon"></i>
     <span id="ownerBtnText">Owner Login</span>
@@ -390,8 +338,8 @@
 <nav>
     <div class="brand-container">
         <img src="https://via.placeholder.com/50?text=V" id="navLogo" class="nav-logo clickable-img" onclick="ownerClick('navLogoInput')">
-        <input type="file" id="navLogoInput" class="upload-input owner-only" onchange="previewImage(this,'navLogo')">
-        <span class="brand-name" contenteditable="true">VETRIVEL</span>
+        <input type="file" id="navLogoInput" class="upload-input owner-only" accept="image/*" onchange="saveImage(this,'navLogo','img_navLogo')">
+        <span class="brand-name" contenteditable="false">VETRIVEL</span>
     </div>
     <ul class="nav-links">
         <li><a href="#home">Home</a></li>
@@ -406,12 +354,11 @@
 <section id="home">
     <span class="section-num">01</span>
     <img src="https://via.placeholder.com/200" id="heroImg" class="hero-img clickable-img" onclick="ownerClick('heroInput')">
-    <input type="file" id="heroInput" class="upload-input owner-only" onchange="previewImage(this,'heroImg')">
-    <h1 contenteditable="true">Hi, I'm Vetrivel</h1>
-    <p contenteditable="true" style="color:var(--primary-blue);font-size:1.3rem;margin-top:10px;">
+    <input type="file" id="heroInput" class="upload-input owner-only" accept="image/*" onchange="saveImage(this,'heroImg','img_heroImg')">
+    <h1 contenteditable="false">Hi, I'm Vetrivel</h1>
+    <p contenteditable="false" style="color:var(--primary-blue);font-size:1.3rem;margin-top:10px;">
         ECE Student | Embedded Systems Learner<span class="typed-cursor">|</span>
     </p>
-
 </section>
 
 <!-- About -->
@@ -420,16 +367,16 @@
     <h2 class="reveal">About Me</h2>
     <div class="about-grid reveal">
         <div class="about-left">
-            <img src="https://via.placeholder.com/400x500?text=Your+Photo" id="aboutImg" class="about-img">
+            <img src="https://via.placeholder.com/400x500?text=Your+Photo" id="aboutImg" class="about-img clickable-img" onclick="ownerClick('aboutImgInput')">
             <br>
-            <button class="btn owner-only" onclick="document.getElementById('aboutImgInput').click()">
+            <button class="btn owner-only" onclick="document.getElementById('aboutImgInput').click()" style="margin-top:12px;">
                 <i class="fas fa-camera"></i> Change Photo
             </button>
-            <input type="file" id="aboutImgInput" class="upload-input owner-only" onchange="previewImage(this,'aboutImg')">
+            <input type="file" id="aboutImgInput" class="upload-input owner-only" accept="image/*" onchange="saveImage(this,'aboutImg','img_aboutImg')">
         </div>
         <div class="about-right">
-            <h3 contenteditable="true">My Story</h3>
-            <p contenteditable="true">I am Vetrivel, a passionate Electronics and Communication Engineering student.
+            <h3 contenteditable="false">My Story</h3>
+            <p contenteditable="false" id="aboutText">I am Vetrivel, a passionate Electronics and Communication Engineering student.
 I am currently pursuing my B.E degree at Sir Issac Newton College of Engineering and Technology, Nagapattinam.
 I have a strong interest in Embedded Systems, electronics, and programming.
 I enjoy learning how technology works by combining hardware and software concepts.
@@ -437,12 +384,12 @@ As a first-year engineering student, I am building strong foundations in basic e
 I am continuously exploring new technologies and improving my technical skills.
 I am motivated to gain practical knowledge and grow in the field of embedded systems.
 My goal is to become a skilled Embedded Software Engineer and contribute to innovative technology solutions.</p>
-            <h3 contenteditable="true">Technical Skills</h3>
+            <h3 contenteditable="false" style="margin-top:20px;">Technical Skills</h3>
             <div class="skills-box" id="skillsBox">
-                <span class="skill-tag" contenteditable="true" style="animation-delay:0.1s">Embedded C</span>
-                <span class="skill-tag" contenteditable="true" style="animation-delay:0.2s">Python</span>
-                <span class="skill-tag" contenteditable="true" style="animation-delay:0.3s">Arduino</span>
-                <span class="skill-tag" contenteditable="true" style="animation-delay:0.4s">Circuit Design</span>
+                <span class="skill-tag" contenteditable="false" style="animation-delay:0.1s">Embedded C</span>
+                <span class="skill-tag" contenteditable="false" style="animation-delay:0.2s">Python</span>
+                <span class="skill-tag" contenteditable="false" style="animation-delay:0.3s">Arduino</span>
+                <span class="skill-tag" contenteditable="false" style="animation-delay:0.4s">Circuit Design</span>
             </div>
         </div>
     </div>
@@ -452,13 +399,13 @@ My goal is to become a skilled Embedded Software Engineer and contribute to inno
 <section id="activity">
     <span class="section-num">03</span>
     <h2 class="reveal">My Activity</h2>
-    <button class="btn btn-add reveal owner-only" onclick="addCard('activity-grid','Activity')">+ Add New Activity</button>
+    <button class="btn btn-add reveal owner-only" onclick="addCard('activity-grid','Activity','act')">+ Add New Activity</button>
     <div class="grid" id="activity-grid">
-        <div class="card">
+        <div class="card" data-cardid="act1">
             <img src="https://via.placeholder.com/400x250" id="act1" class="clickable-img" onclick="ownerClick('act1Input')">
-            <input type="file" id="act1Input" class="upload-input owner-only" onchange="previewImage(this,'act1')">
-            <h4 contenteditable="true">Project Title</h4>
-            <p contenteditable="true" style="color:var(--text-gray)">Short description of your activity.</p>
+            <input type="file" id="act1Input" class="upload-input owner-only" accept="image/*" onchange="saveImage(this,'act1','img_act1')">
+            <h4 contenteditable="false">Project Title</h4>
+            <p contenteditable="false" style="color:var(--text-gray)">Short description of your activity.</p>
             <div class="reaction-bar" id="reactions-act1">
                 <button class="react-btn" onclick="react(this,'❤️','reactions-act1')"><span>❤️</span><span class="count">0</span></button>
                 <button class="react-btn" onclick="react(this,'👍','reactions-act1')"><span>👍</span><span class="count">0</span></button>
@@ -473,13 +420,13 @@ My goal is to become a skilled Embedded Software Engineer and contribute to inno
 <section id="academic">
     <span class="section-num">04</span>
     <h2 class="reveal">Academic Excellence</h2>
-    <button class="btn btn-add reveal owner-only" onclick="addCard('academic-grid','Academic')">+ Add New Achievement</button>
+    <button class="btn btn-add reveal owner-only" onclick="addCard('academic-grid','Academic','aca')">+ Add New Achievement</button>
     <div class="grid" id="academic-grid">
-        <div class="card">
+        <div class="card" data-cardid="aca1">
             <img src="https://via.placeholder.com/400x250" id="aca1" class="clickable-img" onclick="ownerClick('aca1Input')">
-            <input type="file" id="aca1Input" class="upload-input owner-only" onchange="previewImage(this,'aca1')">
-            <h4 contenteditable="true">Award Name</h4>
-            <p contenteditable="true" style="color:var(--text-gray)">Details about your academic achievement.</p>
+            <input type="file" id="aca1Input" class="upload-input owner-only" accept="image/*" onchange="saveImage(this,'aca1','img_aca1')">
+            <h4 contenteditable="false">Award Name</h4>
+            <p contenteditable="false" style="color:var(--text-gray)">Details about your academic achievement.</p>
             <div class="reaction-bar" id="reactions-aca1">
                 <button class="react-btn" onclick="react(this,'❤️','reactions-aca1')"><span>❤️</span><span class="count">0</span></button>
                 <button class="react-btn" onclick="react(this,'👍','reactions-aca1')"><span>👍</span><span class="count">0</span></button>
@@ -493,14 +440,14 @@ My goal is to become a skilled Embedded Software Engineer and contribute to inno
 <!-- Workshop -->
 <section id="workshop">
     <span class="section-num">05</span>
-    <h2 class="reveal">Workshops & Seminars</h2>
-    <button class="btn btn-add reveal owner-only" onclick="addCard('workshop-grid','Workshop')">+ Add New Workshop</button>
+    <h2 class="reveal">Workshops &amp; Seminars</h2>
+    <button class="btn btn-add reveal owner-only" onclick="addCard('workshop-grid','Workshop','work')">+ Add New Workshop</button>
     <div class="grid" id="workshop-grid">
-        <div class="card">
+        <div class="card" data-cardid="work1">
             <img src="https://via.placeholder.com/400x250" id="work1" class="clickable-img" onclick="ownerClick('work1Input')">
-            <input type="file" id="work1Input" class="upload-input owner-only" onchange="previewImage(this,'work1')">
-            <h4 contenteditable="true">Workshop Name</h4>
-            <p contenteditable="true" style="color:var(--text-gray)">Conducted by [Organization] - Date.</p>
+            <input type="file" id="work1Input" class="upload-input owner-only" accept="image/*" onchange="saveImage(this,'work1','img_work1')">
+            <h4 contenteditable="false">Workshop Name</h4>
+            <p contenteditable="false" style="color:var(--text-gray)">Conducted by [Organization] - Date.</p>
             <div class="reaction-bar" id="reactions-work1">
                 <button class="react-btn" onclick="react(this,'❤️','reactions-work1')"><span>❤️</span><span class="count">0</span></button>
                 <button class="react-btn" onclick="react(this,'👍','reactions-work1')"><span>👍</span><span class="count">0</span></button>
@@ -516,128 +463,91 @@ My goal is to become a skilled Embedded Software Engineer and contribute to inno
 </footer>
 
 <script>
-/* ── Cursor glow ── */
-const glow = document.getElementById('cursorGlow');
-document.addEventListener('mousemove', e => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top  = e.clientY + 'px';
-});
+/* ══════════════════════════════════════════════════
+   LOCALSTORAGE — Image & Text Persistence
+   ══════════════════════════════════════════════════ */
 
-/* ── Particle canvas ── */
-const canvas = document.getElementById('particles-canvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
+const STORAGE_PREFIX = 'vetri_portfolio_';
 
-function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-resize();
-window.addEventListener('resize', resize);
+// Save image as base64 in localStorage
+function saveImage(input, imgId, storageKey) {
+    if (!input.files || !input.files[0]) return;
+    const file = input.files[0];
 
-function Particle() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.r = Math.random() * 1.5 + 0.5;
-    this.dx = (Math.random() - 0.5) * 0.4;
-    this.dy = (Math.random() - 0.5) * 0.4;
-    this.alpha = Math.random() * 0.5 + 0.2;
+    // Warn if > 2MB (base64 inflates ~33%)
+    if (file.size > 2 * 1024 * 1024) {
+        alert('⚠️ Image is large (' + (file.size/1024/1024).toFixed(1) + 'MB). Try a smaller image for best results.');
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const base64 = e.target.result;
+        // Update the image on screen
+        document.getElementById(imgId).src = base64;
+        // Save to localStorage
+        try {
+            localStorage.setItem(STORAGE_PREFIX + storageKey, base64);
+            showSaveIndicator();
+        } catch(err) {
+            alert('⚠️ Storage full! Try a smaller or compressed image.');
+        }
+    };
+    reader.readAsDataURL(file);
 }
 
-for (let i = 0; i < 80; i++) particles.push(new Particle());
-
-function drawParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0,210,255,${p.alpha})`;
-        ctx.fill();
-        p.x += p.dx; p.y += p.dy;
-        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-    });
-    // draw connecting lines
-    for (let i = 0; i < particles.length; i++) {
-        for (let j = i+1; j < particles.length; j++) {
-            const dist = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
-            if (dist < 120) {
-                ctx.beginPath();
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
-                ctx.strokeStyle = `rgba(0,210,255,${0.08 * (1 - dist/120)})`;
-                ctx.lineWidth = 0.5;
-                ctx.stroke();
-            }
+// Load all saved images on page load
+function loadSavedImages() {
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith(STORAGE_PREFIX + 'img_')) {
+            const imgId = key.replace(STORAGE_PREFIX + 'img_', '');
+            const val   = localStorage.getItem(key);
+            const el    = document.getElementById(imgId);
+            if (el && val) el.src = val;
         }
     }
-    requestAnimationFrame(drawParticles);
 }
-drawParticles();
 
-/* ── Scroll reveal ── */
-const revealEls = document.querySelectorAll('.reveal');
-const cardEls   = document.querySelectorAll('.card');
+// Save text content
+function saveText(el, storageKey) {
+    try {
+        localStorage.setItem(STORAGE_PREFIX + 'txt_' + storageKey, el.innerText);
+        showSaveIndicator();
+    } catch(e) {}
+}
 
-const observer = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            observer.unobserve(e.target);
+// Load all saved texts
+function loadSavedTexts() {
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith(STORAGE_PREFIX + 'txt_')) {
+            const elId = key.replace(STORAGE_PREFIX + 'txt_', '');
+            const val  = localStorage.getItem(key);
+            const el   = document.getElementById(elId) || document.querySelector('[data-saveid="' + elId + '"]');
+            if (el && val) el.innerText = val;
         }
-    });
-}, { threshold: 0.15 });
-
-revealEls.forEach(el => observer.observe(el));
-cardEls.forEach((el, i) => {
-    el.style.animationDelay = (i * 0.12) + 's';
-    observer.observe(el);
-});
-
-/* ── Image preview ── */
-function previewImage(input, displayId) {
-    if (input.files && input.files[0]) {
-        const reader = new FileReader();
-        reader.onload = e => document.getElementById(displayId).src = e.target.result;
-        reader.readAsDataURL(input.files[0]);
     }
 }
 
-/* ── Add card ── */
-let counter = 20;
-function addCard(containerId, type) {
-    const container = document.getElementById(containerId);
-    const id = 'new' + counter++;
-    const div = document.createElement('div');
-    div.className = 'card';
-    div.style.opacity = '0';
-    div.style.transform = 'translateY(30px)';
-    div.innerHTML = `
-        <img src="https://via.placeholder.com/400x250?text=${type}" id="${id}" class="clickable-img" onclick="ownerClick('${id}Input')">
-        <input type="file" id="${id}Input" class="upload-input owner-only" onchange="previewImage(this,'${id}')">
-        <h4 contenteditable="true">New ${type}</h4>
-        <p contenteditable="true" style="color:var(--text-gray)">Edit your description here.</p>
-        ${makeReactionBar(id)}
-        <button class="btn owner-only" style="background:rgba(255,0,0,0.1);color:red;border:1px solid red;display:inline-flex!important;" onclick="this.parentElement.remove()">Delete</button>
-    `;
-    container.appendChild(div);
-    requestAnimationFrame(() => {
-        div.style.transition = 'opacity 0.5s ease, transform 0.5s cubic-bezier(0.22,1,0.36,1)';
-        div.style.opacity = '1';
-        div.style.transform = 'translateY(0)';
-    });
+function showSaveIndicator() {
+    const ind = document.getElementById('saveIndicator');
+    ind.classList.add('show');
+    clearTimeout(ind._timeout);
+    ind._timeout = setTimeout(() => ind.classList.remove('show'), 2000);
 }
 
-/* ══════════════════════════════════
-   OWNER MODE — Password Protection
-   ══════════════════════════════════ */
-const OWNER_PASSWORD = 'vetrivel2026'; // 🔑 Change this to your own password
+/* ══════════════════════════════════════════════════
+   OWNER MODE
+   ══════════════════════════════════════════════════ */
+const OWNER_PASSWORD = 'vetrivel2026';
 
 function handleOwnerBtn() {
     if (document.body.classList.contains('owner-mode')) {
-        // Logout
         document.body.classList.remove('owner-mode');
         document.getElementById('ownerToggleBtn').classList.remove('active');
         document.getElementById('ownerBtnIcon').className = 'fas fa-lock';
         document.getElementById('ownerBtnText').textContent = 'Owner Login';
-        applyOwnerMode(false);
+        setEditable(false);
     } else {
         openOwnerModal();
     }
@@ -662,18 +572,24 @@ function confirmOwner() {
         document.getElementById('ownerToggleBtn').classList.add('active');
         document.getElementById('ownerBtnIcon').className = 'fas fa-lock-open';
         document.getElementById('ownerBtnText').textContent = '🟢 Owner Mode — Logout';
-        applyOwnerMode(true);
+        setEditable(true);
     } else {
-        const err = document.getElementById('modalError');
-        err.textContent = '❌ Incorrect password. Try again.';
+        document.getElementById('modalError').textContent = '❌ Incorrect password. Try again.';
         document.getElementById('ownerPasswordInput').value = '';
         document.getElementById('ownerPasswordInput').focus();
     }
 }
 
-function applyOwnerMode(isOwner) {
+function setEditable(isOwner) {
     document.querySelectorAll('[contenteditable]').forEach(el => {
         el.contentEditable = isOwner ? 'true' : 'false';
+        if (isOwner) {
+            // Auto-save text on blur
+            el.addEventListener('blur', function() {
+                const sid = this.id || this.dataset.saveid;
+                if (sid) saveText(this, sid);
+            });
+        }
     });
 }
 
@@ -683,22 +599,163 @@ function ownerClick(inputId) {
     }
 }
 
-// Close modal when clicking backdrop
 document.getElementById('ownerModal').addEventListener('click', function(e) {
     if (e.target === this) closeOwnerModal();
 });
 
-// Start in viewer mode
-applyOwnerMode(false);
+/* ══════════════════════════════════════════════════
+   ADD CARD (with localStorage support)
+   ══════════════════════════════════════════════════ */
+let counter = 20;
 
-/* ══════════════════════════════════
+function addCard(containerId, type, prefix) {
+    const container = document.getElementById(containerId);
+    const id   = prefix + 'new' + counter;
+    const key  = STORAGE_PREFIX + 'img_' + id;
+    counter++;
+
+    const div = document.createElement('div');
+    div.className = 'card';
+    div.dataset.cardid = id;
+    div.style.opacity = '0';
+    div.style.transform = 'translateY(30px)';
+    div.innerHTML = `
+        <img src="https://via.placeholder.com/400x250?text=${type}" id="${id}" class="clickable-img" onclick="ownerClick('${id}Input')">
+        <input type="file" id="${id}Input" class="upload-input owner-only" accept="image/*" onchange="saveImage(this,'${id}','img_${id}')">
+        <h4 contenteditable="true" id="${id}_title">New ${type}</h4>
+        <p contenteditable="true" id="${id}_desc" style="color:var(--text-gray)">Edit your description here.</p>
+        ${makeReactionBar(id)}
+        <button class="btn owner-only" style="background:rgba(255,0,0,0.1);color:red;border:1px solid red;display:inline-flex!important;margin-top:8px;" onclick="deleteCard(this,'${id}')">
+            <i class="fas fa-trash"></i> Delete
+        </button>
+    `;
+    container.appendChild(div);
+
+    // Animate in
+    requestAnimationFrame(() => {
+        div.style.transition = 'opacity 0.5s ease, transform 0.5s cubic-bezier(0.22,1,0.36,1)';
+        div.style.opacity = '1';
+        div.style.transform = 'translateY(0)';
+    });
+
+    // Attach save-on-blur listeners
+    ['_title','_desc'].forEach(suffix => {
+        const el = document.getElementById(id + suffix);
+        if (el) el.addEventListener('blur', function() {
+            saveText(this, id + suffix);
+        });
+    });
+
+    // Save card list to localStorage
+    saveCardList(containerId);
+}
+
+function deleteCard(btn, cardId) {
+    // Remove from DOM
+    btn.closest('.card').remove();
+    // Remove stored image
+    localStorage.removeItem(STORAGE_PREFIX + 'img_' + cardId);
+    // Remove stored texts
+    localStorage.removeItem(STORAGE_PREFIX + 'txt_' + cardId + '_title');
+    localStorage.removeItem(STORAGE_PREFIX + 'txt_' + cardId + '_desc');
+    // Update card list
+    const section = btn.closest('section');
+    if (section) {
+        const grid = section.querySelector('.grid');
+        if (grid) saveCardList(grid.id);
+    }
+    showSaveIndicator();
+}
+
+// Save which cards exist in a grid
+function saveCardList(gridId) {
+    const grid  = document.getElementById(gridId);
+    if (!grid) return;
+    const cards = Array.from(grid.querySelectorAll('.card[data-cardid]')).map(c => c.dataset.cardid);
+    try {
+        localStorage.setItem(STORAGE_PREFIX + 'cards_' + gridId, JSON.stringify(cards));
+    } catch(e) {}
+}
+
+/* ══════════════════════════════════════════════════
+   CURSOR GLOW
+   ══════════════════════════════════════════════════ */
+const glow = document.getElementById('cursorGlow');
+document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top  = e.clientY + 'px';
+});
+
+/* ══════════════════════════════════════════════════
+   PARTICLE CANVAS
+   ══════════════════════════════════════════════════ */
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+resize();
+window.addEventListener('resize', resize);
+
+function Particle() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.r = Math.random() * 1.5 + 0.5;
+    this.dx = (Math.random() - 0.5) * 0.4;
+    this.dy = (Math.random() - 0.5) * 0.4;
+    this.alpha = Math.random() * 0.5 + 0.2;
+}
+for (let i = 0; i < 80; i++) particles.push(new Particle());
+
+function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0,210,255,${p.alpha})`;
+        ctx.fill();
+        p.x += p.dx; p.y += p.dy;
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    });
+    for (let i = 0; i < particles.length; i++) {
+        for (let j = i+1; j < particles.length; j++) {
+            const dist = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
+            if (dist < 120) {
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.strokeStyle = `rgba(0,210,255,${0.08*(1-dist/120)})`;
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+            }
+        }
+    }
+    requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+/* ══════════════════════════════════════════════════
+   SCROLL REVEAL
+   ══════════════════════════════════════════════════ */
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.card').forEach((el, i) => {
+    el.style.animationDelay = (i * 0.12) + 's';
+    observer.observe(el);
+});
+
+/* ══════════════════════════════════════════════════
    REACTION SYSTEM
-   ══════════════════════════════════ */
+   ══════════════════════════════════════════════════ */
 function react(btn, emoji, barId) {
     const count = btn.querySelector('.count');
     const wasReacted = btn.classList.contains('reacted');
-
-    // Toggle
     if (wasReacted) {
         btn.classList.remove('reacted');
         count.textContent = Math.max(0, parseInt(count.textContent) - 1);
@@ -707,10 +764,8 @@ function react(btn, emoji, barId) {
         count.textContent = parseInt(count.textContent) + 1;
         spawnFloatingEmoji(btn, emoji);
     }
-
-    // Burst animation
     btn.classList.remove('burst');
-    void btn.offsetWidth; // reflow
+    void btn.offsetWidth;
     btn.classList.add('burst');
     btn.addEventListener('animationend', () => btn.classList.remove('burst'), { once: true });
 }
@@ -720,13 +775,12 @@ function spawnFloatingEmoji(btn, emoji) {
     const el = document.createElement('div');
     el.className = 'float-emoji';
     el.textContent = emoji;
-    el.style.left = (rect.left + rect.width / 2 - 12) + 'px';
+    el.style.left = (rect.left + rect.width/2 - 12) + 'px';
     el.style.top  = (rect.top - 10) + 'px';
     document.body.appendChild(el);
     el.addEventListener('animationend', () => el.remove());
 }
 
-/* For dynamically added cards */
 function makeReactionBar(cardId) {
     return `<div class="reaction-bar" id="reactions-${cardId}">
         <button class="react-btn" onclick="react(this,'❤️','reactions-${cardId}')"><span>❤️</span><span class="count">0</span></button>
@@ -735,6 +789,21 @@ function makeReactionBar(cardId) {
         <button class="react-btn" onclick="react(this,'🤩','reactions-${cardId}')"><span>🤩</span><span class="count">0</span></button>
     </div>`;
 }
+
+/* ══════════════════════════════════════════════════
+   INIT — Load everything from localStorage
+   ══════════════════════════════════════════════════ */
+window.addEventListener('DOMContentLoaded', () => {
+    // 1. Load saved images
+    loadSavedImages();
+    // 2. Load saved texts
+    loadSavedTexts();
+    // 3. Attach blur-save to existing editable fields
+    ['heroImg','aboutImg','navLogo'].forEach(id => {
+        // images done via saveImage()
+    });
+    setEditable(false); // start in viewer mode
+});
 </script>
 </body>
 </html>
